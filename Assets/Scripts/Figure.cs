@@ -6,6 +6,7 @@ public class Figure : MonoBehaviour
 {
     [HideInInspector]public bool taken;
     [HideInInspector] public bool findPlace;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -34,4 +35,5 @@ public class Figure : MonoBehaviour
             findPlace = false;
         }
     }
+
 }

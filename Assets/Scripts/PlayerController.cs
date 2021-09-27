@@ -20,7 +20,8 @@ public class PlayerController : MonoBehaviour
         {
             if (!takenFigure)
             {
-                CheckFigureAround(gameObject.transform.position, 5f);
+                CheckFigureAround(gameObject.transform.position, 2f);
+               // OnCheckForward();
             }
             else
             {
@@ -49,12 +50,43 @@ public class PlayerController : MonoBehaviour
            
         }
     }
+    public void OnCheckForward()
+    {
+       
+        Ray ray = new Ray(takePlace.transform.position - new Vector3(0,0.54f,0), takePlace.transform.forward);
+        RaycastHit hit;
+        
+        if (Physics.Raycast(ray, out hit, 5f))
+        {
+            if (hit.collider != null)
+            {
 
+                if (hit.transform.gameObject.CompareTag("Cube") || hit.transform.gameObject.CompareTag("Sphere") || hit.transform.gameObject.CompareTag("Capsul"))
+                {
+                    if (!takenFigure)
+                    {
+                        takenFigure = true;
+                        hit.transform.gameObject.GetComponent<Figure>().taken = true;
+
+                        hit.transform.position = takePlace.transform.position;
+                        hit.transform.parent = takePlace.transform;
+                        figureInHand = hit.transform.gameObject;
+                    }
+
+                }
+               
+            }
+
+            Debug.DrawLine(ray.origin, hit.point, Color.red);
+        }
+    }
     void PlacedFigure()
     {
        if(figureInHand.GetComponent<Figure>().findPlace)
         {
-            figureInHand.SetActive(false);
+            GameManager.Instance.AddFigure(figureInHand.tag);
+           Destroy(figureInHand);
+            
             takenFigure = false;
         }
     }
