@@ -7,6 +7,9 @@ TagManager:
   - Cube
   - Sphere
   - Capsul
+  - SpherePlace
+  - CubePlace
+  - CapsulPlace
   layers:
   - Default
   - TransparentFX
