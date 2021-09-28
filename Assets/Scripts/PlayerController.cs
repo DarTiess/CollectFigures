@@ -7,12 +7,21 @@ public class PlayerController : MonoBehaviour
     public GameObject takePlace;
     bool takenFigure;
     GameObject figureInHand;
-    // Start is called before the first frame update
-    void Start()
+    Vector3 startPosition;
+
+    public static PlayerController Instance { get; private set; }
+
+    private void Awake()
     {
-        
+        Instance = this;
+       
     }
 
+    private void Start()
+    {
+       
+    startPosition = transform.position; 
+    }
     // Update is called once per frame
     void Update()
     {
@@ -29,7 +38,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
+ 
     void CheckFigureAround(Vector3 center, float radius)
     {
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
@@ -84,10 +93,18 @@ public class PlayerController : MonoBehaviour
     {
        if(figureInHand.GetComponent<Figure>().findPlace)
         {
+            figureInHand.tag = figureInHand.tag + "InHand";
             GameManager.Instance.AddFigure(figureInHand.tag);
            Destroy(figureInHand);
             
             takenFigure = false;
         }
     }
+
+    public void RestartPlayer()
+    {
+        transform.position = startPosition;
+        
+    }
+
 }

@@ -11,6 +11,9 @@ TagManager:
   - CubePlace
   - CapsulPlace
   - Wall
+  - SphereInHand
+  - CubeInHand
+  - CapsulInHand
   layers:
   - Default
   - TransparentFX

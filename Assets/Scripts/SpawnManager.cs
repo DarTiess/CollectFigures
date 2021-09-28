@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    public static SpawnManager Instance { get; private set; }
     public GameObject[] figures;
     public int figureAmount;
     float zPos, xPos;
@@ -19,7 +20,7 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    void GenerateFigures()
+   public void GenerateFigures()
     {
         int rndFigure;
         for(int i = 0; i < figureAmount; i++)
