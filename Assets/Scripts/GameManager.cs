@@ -97,6 +97,7 @@ public class GameManager : MonoBehaviour
     }
     public void WinGame()
     {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.Win);
         cubeFinal.text = cubeCountInt.ToString();
         sphereFinal.text = sphereCountInt.ToString();
         capsulFinal.text = capsulCountInt.ToString();

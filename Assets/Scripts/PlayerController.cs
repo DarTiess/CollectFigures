@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
                 if (!takenFigure)
                 {
                     takenFigure = true;
+                    SoundManager.Instance.PlaySound(SoundManager.Sound.GetFigure);
                     hitCollider.GetComponent<Figure>().taken = true;
 
                     hitCollider.transform.position = takePlace.transform.position;
@@ -95,7 +96,8 @@ public class PlayerController : MonoBehaviour
         {
             figureInHand.tag = figureInHand.tag + "InHand";
             GameManager.Instance.AddFigure(figureInHand.tag);
-           Destroy(figureInHand);
+            SoundManager.Instance.PlaySound(SoundManager.Sound.PushOnPlace);
+            Destroy(figureInHand);
             
             takenFigure = false;
         }

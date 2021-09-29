@@ -6,6 +6,8 @@ public class Figure : MonoBehaviour
 {
     [HideInInspector]public bool taken;
     [HideInInspector] public bool findPlace;
+    public ParticleSystem shineEffect;
+
     
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,11 @@ public class Figure : MonoBehaviour
         if (!taken)
         {
             transform.Rotate(Vector3.up, 100f * Time.deltaTime);
+           // shineEffect.Play();
+        }
+        else
+        {
+            shineEffect.Stop();
         }
        
     }
@@ -28,6 +35,7 @@ public class Figure : MonoBehaviour
         if (other.gameObject.CompareTag(gameObject.transform.tag + "Place"))
         {
             findPlace = true;
+          
             Debug.Log(gameObject.tag + " is on place");
         }
         else

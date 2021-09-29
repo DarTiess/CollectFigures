@@ -26,8 +26,8 @@ public class SpawnManager : MonoBehaviour
         for(int i = 0; i < figureAmount; i++)
         {
             rndFigure = Random.Range(0, figures.Length);
-            xPos = Random.Range(8.41f, -29.22f);
-            zPos = Random.Range(6.57f, -6.64f);
+            xPos = Random.Range(8.41f, -18.22f);
+            zPos = Random.Range(6.3f, -5.64f);
 
             Instantiate(figures[rndFigure], new Vector3(xPos, 1.4f, zPos), figures[rndFigure].transform.rotation);
         }
